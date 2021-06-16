@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <SplashScreen v-if="isLoading"/>
+
+    <StartMenu v-if="!isLoading"/>
+
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import StartMenu from './components/StartMenu';
+import SplashScreen from './components/SplashScreen';
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    SplashScreen,
+    StartMenu,
+  },
+
+  data: () => ({
+    isLoading: true,
+  }),
+
+  mounted() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2500);
   }
-}
+
+
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.vue-splash__text {
+  margin-top: 50px;
+  font-size: 2rem;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
