@@ -23,9 +23,8 @@
       <v-expand-transition>
         <div v-show="expandBar"> 
           <v-row class="text-center">
-            <v-col cols="2">
-            </v-col>
-            <v-col cols="4">
+
+            <v-col cols="6">
               <v-card
                   color="blue lighten-1"
                   dark
@@ -65,7 +64,7 @@
                 </v-card>
             </v-col>
 
-            <v-col cols="4">
+            <v-col cols="6">
               <v-card
                   color="teal lighten-1"
                   dark
@@ -107,8 +106,8 @@
           </v-row>
 
           <v-row class="text-center">
-            <v-col cols="2"></v-col>
-            <v-col cols="4">
+
+            <v-col cols="6">
               <v-card
                   color="deep-orange lighten-1"
                   dark
@@ -148,7 +147,7 @@
                 </v-card>
             </v-col>
 
-            <v-col cols="4">
+            <v-col cols="6">
               <v-card
                   color="green lighten-1"
                   dark

@@ -11,7 +11,7 @@
  
 <script>
 import VueSplash from "./VueSplash.vue";
-import HuitzilLogo from "../assets/huitzil.png";
+import HuitzilLogo from "../assets/huitzil-big.png";
  
 export default {
   name: "SplashScreen",
