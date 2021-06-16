@@ -4,7 +4,7 @@
     :logo="logo"
     title="BIENVENIDO"
     color="#00bfa5"
-    :size="300"
+    :size="220"
     :fixed="true"
   />
 </template>
