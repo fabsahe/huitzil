@@ -33,7 +33,7 @@
                   <div class="d-flex flex-no-wrap justify-space-between">
                     <div>
                       <v-card-title
-                        class="text-h5"
+                        class="text-h5v"
                       >Memorama de<br> multiplicaciones</v-card-title>
 
                       <v-card-subtitle></v-card-subtitle>
@@ -73,7 +73,7 @@
                   <div class="d-flex flex-no-wrap justify-space-between">
                     <div>
                       <v-card-title
-                        class="text-h5"
+                        class="text-h5v"
                       >¿Cuántas ruedas<br> se necesitan?</v-card-title>
 
                       <v-card-subtitle></v-card-subtitle>
@@ -116,7 +116,7 @@
                   <div class="d-flex flex-no-wrap justify-space-between">
                     <div>
                       <v-card-title
-                        class="text-h5"
+                        class="text-h5v"
                       >Medios, cuartos <br>y octavos</v-card-title>
 
                       <v-card-subtitle></v-card-subtitle>
@@ -156,7 +156,7 @@
                   <div class="d-flex flex-no-wrap justify-space-between">
                     <div>
                       <v-card-title
-                        class="text-h5"
+                        class="text-h5v"
                       >Saltando sobre<br> el puente</v-card-title>
 
                       <v-card-subtitle></v-card-subtitle>
@@ -187,18 +187,33 @@
                 </v-card>
             </v-col>
           </v-row>
+
+          <v-row class="text-center" align="center">
+            <v-col cols="6">
+              <v-btn color="teal lighten-1" block class="bp" dark>
+                Ayuda
+              </v-btn>
+            </v-col>
+            <v-col cols="6">
+              <v-btn color="lime darken-1" block dark class="no-up">
+                Salir
+              </v-btn>
+            </v-col>            
+          </v-row>
+
         </div>
       </v-expand-transition> 
 
       <v-expand-transition>
         <div class="activity" v-show="expandActivity">
-          <h1>ACTIVIDAD {{ activityNumber }}</h1>
+          <Memorama/>
 
           <v-card-text style="height: 100px; position: relative">
               <v-fab-transition>
                 <v-btn
                   v-show="!hiddenBtn"
                   color="blue"
+                  class="no-up"
                   dark
                   absolute
                   bottom
@@ -216,6 +231,7 @@
                 <v-btn
                   v-show="!hiddenBtn"
                   color="green"
+                  class="no-up"
                   dark
                   absolute
                   bottom
@@ -235,9 +251,14 @@
 </template>
 
 <script>
+import Memorama from '@/components/Memorama.vue'
 
 export default {
   name: "StartMenu",
+
+  components: {
+    Memorama
+  },
 
   data: () => ({
     expandBar: true,
@@ -260,7 +281,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.no-up {
+  text-transform: none;
+}
+.bp {
+  text-transform: capitalize;
+  color: #fff;
+}
+.text-h5v {
+
+}
 .v-speed-dial {
     position: absolute;
   }
