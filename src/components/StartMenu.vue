@@ -1,15 +1,19 @@
 <template>
   <v-main>
     <v-expand-transition>
-      <v-app-bar color="white" v-show="expandBar">
-        <v-img
-            alt="Logo"
-            class="shrink mr-2"
-            contain
-            src="../assets/huitzil.png"
-            transition="scale-transition"
-            width="60"></v-img>
-        <v-toolbar-title>HUITZIL</v-toolbar-title>
+      <v-app-bar color="white" v-show="expandBar2">
+        <a @click="showHome">
+          <v-img
+              alt="Logo"
+              class="shrink mr-2"
+              contain
+              src="../assets/huitzil.png"
+              transition="scale-transition"
+              width="60"></v-img>
+        </a>
+        <a @click="showHome" class="a-title">
+          <v-toolbar-title>HUITZIL</v-toolbar-title>
+        </a>
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon>mdi-help</v-icon>
@@ -206,8 +210,9 @@
 
       <v-expand-transition>
         <div class="activity" v-show="expandActivity">
-          <Memorama/>
+          <Memorama :key="keyMem"/>
 
+          <!--
           <v-card-text style="height: 100px; position: relative">
               <v-fab-transition>
                 <v-btn
@@ -242,7 +247,7 @@
                   <v-icon>mdi-help</v-icon>
                 </v-btn>
               </v-fab-transition>
-            </v-card-text>
+            </v-card-text> -->
         </div>
       </v-expand-transition>
 
@@ -261,7 +266,9 @@ export default {
   },
 
   data: () => ({
+    keyMem: 1,
     expandBar: true,
+    expandBar2: true,
     expandCards: true,
     expandActivity: false,
     hiddenBtn: true,
@@ -272,16 +279,26 @@ export default {
     showActivity(a) {
       this.expandBar =! this.expandBar
       this.expandActivity =! this.expandActivity
-      setTimeout(() => {
+      /*setTimeout(() => {
         this.hiddenBtn =! this.hiddenBtn
-      }, 400);
+      }, 400);*/
       this.activityNumber = a
+    },
+
+    showHome() {
+      this.expandBar = true
+      this.expandActivity = false
+      this.keyMem++
     }
   },
 }
 </script>
 
 <style scoped>
+
+.a-title {
+  color:  #414141;
+}
 .no-up {
   text-transform: none;
 }

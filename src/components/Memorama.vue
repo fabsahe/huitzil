@@ -21,12 +21,31 @@
 						<nav class="nav">
 							<div class="text-right">
 								<v-btn v-on:click="nextCard(activeCardIndex, onNext)" class="teal lighten-2 no-up btn-next" dark>
-									Tomar carta
+									Tomar
 								</v-btn>
 							</div>
 						</nav>
 					</template>
 				</vue-card-stack>
+			</v-col>
+
+			<v-col cols=3>
+				<v-img
+					alt="Pointing1"
+					class="shrink mr-2 img-point"
+					contain
+					src="../assets/pointing1.png"
+					transition="scale-transition"
+					v-if="!answerTime"
+					width="220"></v-img>
+				<v-img
+					alt="Pointing1"
+					class="shrink mr-2 img-point"
+					contain
+					src="../assets/pointing2.png"
+					transition="scale-transition"
+					v-if="answerTime"
+					width="220"></v-img>
 			</v-col>
 
 		</v-row>
@@ -35,7 +54,7 @@
 
 <script>
 import VueCardStack from "vue-card-stack"
-import Swal from 'sweetalert2'
+import swal from 'sweetalert'
 
 export default {
 	name: "Memorama",
@@ -48,6 +67,7 @@ export default {
 		return {
 			answerTime: false,
 			answerVal: -1,
+			answersCount: 0,
 			results: [ 
 				{id: 1, val: 0},
 				{id: 2, val: 0},
@@ -111,11 +131,15 @@ export default {
 
 		checkAnswer(val) {
 			if( this.answerVal == val ) {
-				Swal.fire('Muy bien C:')
+				swal("Muy bien C:", "", "success")
 				this.answerTime = false
+				this.answersCount++
+				if( this.answersCount==6 ) {
+					swal("¡Bien! has terminado con esto", "", "success")
+				}
 			}
 			else {
-				Swal.fire('Te equivocaste :C')
+				swal("Te equivocaste :C", "", "error")
 			}
 		}
 	}
@@ -123,7 +147,16 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
+.swal-title {
+	font-family: 'Varela Round', sans-serif !important;
+}
+.swal-button {
+	font-family: 'Varela Round', sans-serif !important;
+}
+.img-point {
+	margin:  5rem 0 0 0;
+}
 .no-up {
   text-transform: none;
 }
